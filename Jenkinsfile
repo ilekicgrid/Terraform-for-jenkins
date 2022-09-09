@@ -1,9 +1,5 @@
 pipeline {
     agent any
-    environment {
-        ACCESS_KEY = credentials('ACCESS_KEY_ID')
-        SECRET_KEY = credentials('SECRET_ACCESS_KEY')
-    }
     stages {
         stage('Checkout') {
             steps {
@@ -19,10 +15,13 @@ pipeline {
         }
 
         stage ("terraform Action") {
-            steps {
-                echo "Terraform action is --> ${action}"
-                sh ('terraform ${action} --auto-approve -var-file="secrets.tfvars"')
-           }
+                WithCredentials([string(credentialsId: 'aws-access-key', variable: 'AWS_ACCESS_KEY_ID'),
+                string(credentialsId: 'aws-secret-key', variable: 'AWS_SECRET_ACCESS_KEY')]) {
+
+                    echo "Terraform action is --> ${action}"
+                    sh ('terraform ${action} --auto-approve -var-file="secrets.tfvars"')
+                }
+            }
         }
     }
 }
