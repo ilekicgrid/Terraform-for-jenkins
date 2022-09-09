@@ -15,6 +15,7 @@ pipeline {
         }
 
         stage ("terraform Action") {
+        steps{
                 WithCredentials([string(credentialsId: 'aws-access-key', variable: 'AWS_ACCESS_KEY_ID'),
                 string(credentialsId: 'aws-secret-key', variable: 'AWS_SECRET_ACCESS_KEY')]) {
 
@@ -24,3 +25,4 @@ pipeline {
             }
         }
     }
+}
