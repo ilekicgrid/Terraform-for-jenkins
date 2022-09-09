@@ -1,8 +1,8 @@
 pipeline {
     agent any
     environment {
-        ACCESS_KEY = credentials('private-key')
-        SECRET_KEY = credentials('secret-key')
+        ACCESS_KEY = credentials('ACCESS_KEY_ID')
+        SECRET_KEY = credentials('SECRET_ACCESS_KEY')
     }
     stages {
         stage('Checkout') {
