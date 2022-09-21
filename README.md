@@ -8,3 +8,9 @@ terraform plan
 terrafrom apply
 
 ```
+
+# Checkout these repoes: 
+
+* https://github.com/ilekicgrid/Ansible-for-jenkins
+* https://github.com/ilekicgrid/crud-php
+* https://github.com/ilekicgrid/Terraform_LAMP_AWS
